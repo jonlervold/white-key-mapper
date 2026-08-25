@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scala White-Key Mapper</title>
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+  <main>
+    <h1>Scala White-Key Mapper</h1>
+    <p class="lede">
+      Every white key advances one degree through the source scale.
+      Black keys duplicate the preceding white key.
+    </p>
+
+    <div id="drop-zone" class="drop-zone">
+      <input id="file-input" type="file" accept=".scl,text/plain">
+      <label for="file-input">Choose a <code>.scl</code> file</label>
+      <span>or drop it here</span>
+    </div>
+
+    <p id="error" class="error" hidden></p>
+
+    <section id="result" hidden>
+      <dl id="summary" class="summary"></dl>
+      <p id="file-note" class="file-note"></p>
+      <div class="toolbar">
+        <label for="start-c">1/1 on</label>
+        <select id="start-c"></select>
+        <button id="download" type="button">Download mapped .scl</button>
+      </div>
+      <ul class="legend">
+        <li>
+          <span class="swatch defined" aria-hidden="true"></span>
+          Light green: pitches listed in the generated <code>.scl</code> (the first cycle from 1/1). Other MIDI notes wrap using that period.
+        </li>
+        <li>
+          <span class="swatch period-start" aria-hidden="true"></span>
+          Dark green: first note of a source-scale period (degree 1), including 1/1.
+        </li>
+      </ul>
+      <div class="table-wrap">
+        <table id="preview">
+          <thead>
+            <tr>
+              <th>MIDI</th>
+              <th>Key</th>
+              <th>White-key index</th>
+              <th>Source degree</th>
+              <th>Source period</th>
+              <th>Generated pitch</th>
+              <th>Normalized pitch</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/ui.js"></script>
+</body>
+</html>
